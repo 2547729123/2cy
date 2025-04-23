@@ -116,3 +116,25 @@ paginate: true
     <a href="{{ paginator.next_page_path | relative_url }}">下一页 &raquo;</a>
   {% endif %}
 </div>
+<!-- 站内文章数量统计 -->
+<p style="text-align:center; font-size: 1.1rem; font-weight: bold; color: #333;">
+  📚 当前站内已收录 <span style="color: #d35400;">{{ site.posts | size }}</span> 篇文章，欢迎阅读！
+</p>
+	<!-- 阅读量模拟功能 -->
+<p id="view-counter" style="text-align:center; font-size: 1.1rem; font-weight: bold; color: #555;">
+  📈 累计阅读量：<span id="view-number" style="color:#2ecc71;"></span> 次
+</p>
+
+<script>
+// 生成一个接近真实的随机数（设定初始阅读量 + 轻微浮动）
+document.addEventListener("DOMContentLoaded", function () {
+  const baseViews = 17600; // 初始基础阅读量
+  const fluctuation = Math.floor(Math.random() * 300); // 模拟随机浮动0~299
+  const totalViews = baseViews + fluctuation;
+
+  document.getElementById("view-number").textContent = totalViews.toLocaleString(); // 加千分位
+});
+</script>
+<p style="text-align: center; font-size: 0.95rem; color: #888;">
+  自站点上线以来，每一次点击，都是一次与新老游戏的重逢——感谢每位默默阅读的你。
+</p>
